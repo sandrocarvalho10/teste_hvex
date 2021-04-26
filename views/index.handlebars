@@ -1,0 +1,70 @@
+<div class="card-home mt-4">
+  <div class="card-body ">
+    <form action="/home" method="POST">
+      <h2 class="text-center">Digite o nome do usuário cadastrado no GitHub</h2>
+      <br>
+      <div class="d-flex">
+        <input type="text" name="emailGit" class="form-control" placeholder="Seu email do gitHub" />
+
+        <button type="submit" class="btn btn-black">Pesquisar</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<hr>
+
+{{#if user}}
+
+<div class="card card-body shadow p-3 mb-5 bg-body rounded results">
+  <div class="aside">
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src={{user.avatar_url}} alt="...">
+      <div class="card-body">
+        <h3 class="username">{{user.login}}</h3>
+        <p class="card-text">{{user.email}}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="column-center">
+    <p class="name"><code><strong>Nome: </strong></code>{{user.name}}</p>
+    <p><code><strong>De: </strong></code> {{user.location}}</p>
+    <p><code><strong>Bio: </strong></code> {{user.bio}}</p>
+    <p><a href="{{user.blog}}" target="_blank">{{user.blog}}</a>
+      <a href="{{user.html_url}}">Acessar perfil</a>
+    </p>
+    <p>{{user.company}}</p>
+    <div class="d-flex">
+      <div class="card">
+        <div class="card-body">
+          <span class="number-card">{{user.followers}}</span>
+          <span class="name-card"> <code>Followers</code></span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <span class="number-card">{{user.following}}</span>
+          <span class="name-card"> <code>Following</code></span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <span class="number-card">{{user.public_repos}}</span>
+          <span class="name-card"> <code>Repo</code></span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <span class="number-card">{{user.public_gists}}</span>
+          <span class="name-card"> <code>Gists</code></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{else}}
+<h1 class="text-center">Não possui registro com esse nome de usuário</h1>
+{{/if}}
